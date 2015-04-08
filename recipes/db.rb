@@ -1,5 +1,11 @@
 db = node[:wp_composer][:db]
 
+mysql_chef_gem 'default' do
+  gem_version '2.9.1'
+  action :install
+end
+
+
 mysql_connection_info = {
     :host => db[:host],
     :username => db[:root],
