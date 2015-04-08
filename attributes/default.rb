@@ -9,8 +9,8 @@ default[:wp_composer][:content_folder] = 'content'
 ### PLUGINS
 
 default[:wp_composer][:plugins] = {
-    "google-sitemap-generator": "~4",
-    "wp-permalauts": "~1"
+    "google-sitemap-generator" => "~4",
+    "wp-permalauts" => "~1"
 }
 
 ### LANG
