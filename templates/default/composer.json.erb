@@ -1,0 +1,42 @@
+<% wordpress_install_dir = "#{@public_folder}/#{@install_folder}" %>
+<% wordpress_content_path = "#{@public_folder}/#{@content_folder}" %>
+
+{
+    "name": "composer-wordpress",
+    "description": "install wordpress via composer",
+    "authors": [{
+        "name": "Andy Ruck",
+        "email": "mychiara+github@gmail.com"
+    }],
+
+    "repositories":[{
+        "type":"composer",
+        "url":"http://wpackagist.org"
+    }],
+
+    "require": {
+        "johnpbloch/wordpress": "<%= @version %>",
+        "koodimonni-language/fi": "*",
+        "koodimonni-language/<%= @language %>": "*"
+    },
+
+    "require-dev": {
+        "wpackagist-plugin/debug-bar": "~0.8.*"
+    },
+
+    "extra": {
+        "wordpress-install-dir": "<%= wordpress_install_dir %>",
+
+        "installer-paths"      : {
+            "<%= wordpress_content_path %>/plugins/{$name}"   : ["type:wordpress-plugin"],
+            "<%= wordpress_content_path %>/mu-plugins/{$name}": ["type:wordpress-muplugin"],
+            "<%= wordpress_content_path %>/themes/{$name}"    : ["type:wordpress-theme"]
+        },
+
+        "dropin-paths": {
+            "<%= wordpress_content_path %>/languages/": ["vendor:koodimonni-language"],
+            "<%= wordpress_content_path %>/languages/plugins/": ["vendor:koodimonni-plugin-language"],
+            "<%= wordpress_content_path %>/languages/themes/": ["vendor:koodimonni-theme-language"]
+      }
+    }
+}
