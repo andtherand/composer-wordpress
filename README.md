@@ -85,6 +85,16 @@ default['wp_composer']['db']['privileges'] = [
 node['wp_composer']['project_name'] = 'mysupercoolwpcomposerproject'
 node['wp_composer']['server_name'] = 'mysupercoolwpcomposerproject.com'
 node['wp_composer']['server_alias'] = ['mysupercoolwpcomposerproject.com', 'www.mysupercoolwpcomposerproject.com']
+
+
+### OPTIONAL ATTRIBUTES
+
+node['wp_composer']['user_plugins'] = {
+  'plugin-name-from-wpackigst' => '~1',
+  '...' => '...',
+  'another-plugin-name-from-wpackigst' => '~1'
+}
+
 ```
 
 Usage
