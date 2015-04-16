@@ -1,6 +1,6 @@
 default['wp_composer']['version'] = '~4'
 
-### FOLDERS
+### FOLDERS AND FILES
 default['wp_composer']['base_path'] = '/var/www/html'
 default['wp_composer']['public_folder'] = 'public'
 default['wp_composer']['install_folder'] = 'wp'

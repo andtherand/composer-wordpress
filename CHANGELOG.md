@@ -1,11 +1,11 @@
-composer-wordpress CHANGELOG
+composer-wp_composer CHANGELOG
 ============================
 
-This file is used to list changes made in each version of the composer-wordpress cookbook.
+This file is used to list changes made in each version of the composer-wp_composer cookbook.
 
 0.1.0
 -----
-- [your_name] - Initial release of composer-wordpress
+- [your_name] - Initial release of composer-wp_composer
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

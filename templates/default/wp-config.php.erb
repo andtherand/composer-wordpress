@@ -1,10 +1,10 @@
 <?php
 
 /**
- * The base configurations of the WordPress.
+ * The base configurations of the wordpress.
  *
  * This file has the following configurations: MySQL settings, Table Prefix,
- * Secret Keys, WordPress Language, and ABSPATH. You can find more information
+ * Secret Keys, wordpress Language, and ABSPATH. You can find more information
  * by visiting {@link http://codex.wordpress.org/Editing_wp-config.php Editing
  * wp-config.php} Codex page. You can get the MySQL settings from your web host.
  *
@@ -12,28 +12,28 @@
  * installation. You don't have to use the web site, you can just copy this file
  * to "wp-config.php" and fill in the values.
  *
- * @package WordPress
+ * @package wordpress
  */
 
 define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
 // ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
+/** The name of the database for wordpress */
 /**
  * CUSTOM INI
  */
-$db_name = '<%= @db %>';
-$db_user = '<%= @db_user %>';
-$db_pass = '<%= @password %>';
-$db_host = '<%= @db_host %>';
+$db_name = '<%= @db.name %>';
+$db_user = '<%= @db.user %>';
+$db_pass = '<%= @db.password %>';
+$db_host = '<%= @db.host %>';
 $wp_home = 'http://<%= @home %>';
-$tablePrefix = '<%= @prefix %>';
+$tablePrefix = '<%= @db.prefix %>';
 
 if ('development' === APPLICATION_ENV) {
     ini_set('html_errors', 1);
-    $db_name = '<%= @db %>';
-    $db_user = '<%= @db_user %>';
-    $db_pass = '<%= @password %>';
-    $db_host = '<%= @db_host %>';
+    $db_name = '<%= @db.name %>';
+    $db_user = '<%= @db.user %>';
+    $db_pass = '<%= @db.password %>';
+    $db_host = '<%= @db.host %>';
 
     $wp_home = 'http://<%= @home %>';
 }
@@ -54,24 +54,24 @@ define('EMPTY_TRASH_DAYS', 28);
  * Authentication Unique Keys and Salts.
  *
  * Change these to different unique phrases!
- * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ wordpress.org secret-key service}
  * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         '<%= @auth_key %>');
-define('SECURE_AUTH_KEY',  '<%= @secure_auth_key %>');
-define('LOGGED_IN_KEY',    '<%= @logged_in_key %>');
-define('NONCE_KEY',        '<%= @nonce_key %>');
-define('AUTH_SALT',        '<%= @auth_salt %>');
-define('SECURE_AUTH_SALT', '<%= @secure_auth_salt %>');
-define('LOGGED_IN_SALT',   '<%= @logged_in_salt %>');
-define('NONCE_SALT',       '<%= @nonce_salt %>');
+define('AUTH_KEY',         '<%= @keys.auth %>');
+define('SECURE_AUTH_KEY',  '<%= @keys.secure_auth %>');
+define('LOGGED_IN_KEY',    '<%= @keys.logged_in %>');
+define('NONCE_KEY',        '<%= @keys.nonce %>');
+define('AUTH_SALT',        '<%= @salt.auth %>');
+define('SECURE_AUTH_SALT', '<%= @salt.secure_auth %>');
+define('LOGGED_IN_SALT',   '<%= @salt.logged_in %>');
+define('NONCE_SALT',       '<%= @salt.nonce %>');
 
 /**#@-*/
 
 /**
- * WordPress Database Table prefix.
+ * wordpress Database Table prefix.
  *
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
@@ -79,9 +79,9 @@ define('NONCE_SALT',       '<%= @nonce_salt %>');
 $table_prefix  = $tablePrefix;
 
 /**
- * WordPress Localized Language, defaults to English.
+ * wordpress Localized Language, defaults to English.
  *
- * Change this to localize WordPress. A corresponding MO file for the chosen
+ * Change this to localize wordpress. A corresponding MO file for the chosen
  * language must be installed to wp-content/languages. For example, install
  * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German
  * language support.
@@ -90,17 +90,18 @@ define('WPLANG', '<%= @language %>');
 define('WP_DEBUG', false);
 define('WP_AUTO_UPDATE_CORE', true);
 
+$realpath = dirname(__FILE__);
 
-/** Absolute path to the WordPress directory. */
+/** Absolute path to the wordpress directory. */
 if ( !defined('ABSPATH') )
-    define('ABSPATH', dirname(__FILE__) . '/');
+    define('ABSPATH', $realpath . '/');
 
 define('WP_HOME', $wp_home);
-define('WP_CONTENT_DIR', ABSPATH . 'content' );
-define( 'WP_LANG_DIR', WP_CONTENT_DIR . '/languages' );
+define('WP_CONTENT_DIR', $realpath . '/content' );
+define('WP_LANG_DIR', WP_CONTENT_DIR . '/languages' );
 define('WP_CONTENT_URL', WP_HOME . '/content');
 define('WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
 define('WP_PLUGIN_URL', WP_CONTENT_URL . '/plugins');
 
-/** Sets up WordPress vars and included files. */
+/** Sets up wordpress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
