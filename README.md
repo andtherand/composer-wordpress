@@ -121,11 +121,11 @@ Example usage with a role:
     },
 
     "run_list": [
-        "role[lamp]", // make sure you have a lamp-stack installed before using wordpress-composer
+        "role[lamp]",
         "recipe[composer-wordpress]"
     ]
 }
-``
+```
 
 Contributing
 ------------
