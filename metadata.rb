@@ -4,7 +4,7 @@ maintainer_email 'mychiara+cookbooks@gmail.com'
 license          'MIT'
 description      'Installs/Configures composer-wordpress'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.0.0'
+version          '1.0.1'
 #source_url       'https://github.com/mychiara/composer-wordpress'
 
 depends 'composer',     '>= 2.0.0'

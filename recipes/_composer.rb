@@ -5,8 +5,12 @@
 # Copyright 2015, shape-VS-stroke (svs)
 
 public_folder = node['wp_composer']['public_folder']
+user_plugins = {}
 
-user_plugins = node['wp_composer'].has_key?('user_plugins') || {}
+if node['wp_composer'].has_key?('user_plugins')
+  user_plugins = node['wp_composer']['user_plugins']
+end
+
 
 template "#{node['wp_composer']['root_dir']}/composer.json" do
   source 'composer.json.erb'
