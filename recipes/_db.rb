@@ -14,7 +14,8 @@ db = node['wp_composer']['db']
 mysql_connection_info = {
   :host     => db['host'],
   :username => db['root'],
-  :password => db['server_root_password']
+  :password => db['server_root_password'],
+  :socket   => db['socket']
 }
 
 # create the database

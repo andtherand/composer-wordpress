@@ -25,6 +25,7 @@ default['wp_composer']['language'] = 'de_DE'
 ### DB
 
 default['wp_composer']['db']['host'] = '127.0.0.1'
+default['wp_composer']['db']['socket'] = '/var/run/mysql-default/mysqld.sock'
 default['wp_composer']['db']['name'] = 'wpdb_dev'
 default['wp_composer']['db']['password'] = 'i am a super save pa$5word, but please change me!?!'
 default['wp_composer']['db']['user'] = 'wpdb_dev_user'
