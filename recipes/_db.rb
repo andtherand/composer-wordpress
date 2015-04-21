@@ -6,10 +6,10 @@
 
 db = node['wp_composer']['db']
 
-mysql2_chef_gem 'default' do
-  gem_version '0.3.17'
-  action      :install
-end
+#mysql2_chef_gem 'default' do
+#  gem_version '0.3.17'
+#  action      :install
+#end
 
 mysql_connection_info = {
   :host     => db['host'],
