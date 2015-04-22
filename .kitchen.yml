@@ -22,7 +22,7 @@ suites:
       wp_composer:
         project_name: testproject
         server_name: local.testproject
-        server_alias:
+        server_aliases:
           - local.testproject
           - testproject.test
 

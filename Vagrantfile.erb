@@ -4,10 +4,11 @@ Vagrant.configure("2") do |c|
 
   if Vagrant.has_plugin?("vagrant-cachier")
     c.cache.auto_detect = true
-    c.cache.scope = :machine
+    c.cache.scope = :box
     c.omnibus.cache_packages = true
   end
 
+  c.librarian_chef.enabled = false
   c.vbguest.auto_update = false
 
 <% if config[:vm_hostname] %>
