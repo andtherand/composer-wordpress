@@ -6,11 +6,6 @@
 
 db = node['wp_composer']['db']
 
-#mysql2_chef_gem 'default' do
-#  gem_version '0.3.17'
-#  action      :install
-#end
-
 mysql_connection_info = {
   :host     => db['host'],
   :username => db['root'],
@@ -29,6 +24,7 @@ mysql_database_user db['user'] do
   connection  mysql_connection_info
   password    db['password']
   privileges  db['privileges']
+  database    db['name']
   action      [:create, :grant]
 end
 

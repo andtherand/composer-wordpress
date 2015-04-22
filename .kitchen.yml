@@ -1,0 +1,36 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-14.04
+
+    driver:
+      vagrantfile_erb: Vagrantfile.erb
+
+suites:
+  - name: default
+    run_list:
+      - recipe[my-lamp::default]
+      - recipe[composer-wordpress::default]
+
+    attributes:
+
+      wp_composer:
+        project_name: testproject
+        server_name: local.testproject
+        server_alias:
+          - local.testproject
+          - testproject.test
+
+        db:
+          user: test_dbu
+          prefix: test_
+          name: test_db
+          server_root_password: root
+
+        user_plugins:
+          akismet: 3.1.1
