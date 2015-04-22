@@ -4,7 +4,7 @@ maintainer_email 'mychiara+cookbooks@gmail.com'
 license          'MIT'
 description      'Installs/Configures composer-wordpress'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.2.2'
+version          '1.2.3'
 
 depends 'composer',     '~> 2.0.0'
 depends 'openssl',      '~> 4.0.0'
