@@ -1,100 +1,12 @@
 <?php
 
-/**
- * The base configurations of the wordpress.
- *
- * This file has the following configurations: MySQL settings, Table Prefix,
- * Secret Keys, wordpress Language, and ABSPATH. You can find more information
- * by visiting {@link http://codex.wordpress.org/Editing_wp-config.php Editing
- * wp-config.php} Codex page. You can get the MySQL settings from your web host.
- *
- * This file is used by the wp-config.php creation script during the
- * installation. You don't have to use the web site, you can just copy this file
- * to "wp-config.php" and fill in the values.
- *
- * @package wordpress
- */
-
-define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for wordpress */
-/**
- * CUSTOM INI
- */
-$db_name = '<%= @db.name %>';
-$db_user = '<%= @db.user %>';
-$db_pass = '<%= @db.password %>';
-$db_host = '<%= @db.host %>';
-$wp_home = 'http://<%= @home %>';
-$tablePrefix = '<%= @db.prefix %>';
-
-if ('development' === APPLICATION_ENV) {
-    ini_set('html_errors', 1);
-    $db_name = '<%= @db.name %>';
-    $db_user = '<%= @db.user %>';
-    $db_pass = '<%= @db.password %>';
-    $db_host = '<%= @db.host %>';
-
-    $wp_home = 'http://<%= @home %>';
-}
-
-define('DB_NAME', $db_name);
-define('DB_USER', $db_user);
-define('DB_PASSWORD', $db_pass);
-define('DB_HOST', $db_host);
-define('DB_CHARSET', 'utf8');
-define('DB_COLLATE', 'utf8_general_ci');
-
-// NO Theme or Plugin Editor
-define('DISALLOW_FILE_EDIT', true);
-define('WP_POST_REVISIONS', 5);
-define('EMPTY_TRASH_DAYS', 28);
-
-/**#@+
- * Authentication Unique Keys and Salts.
- *
- * Change these to different unique phrases!
- * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ wordpress.org secret-key service}
- * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
- *
- * @since 2.6.0
- */
-define('AUTH_KEY',         '<%= @keys.auth %>');
-define('SECURE_AUTH_KEY',  '<%= @keys.secure_auth %>');
-define('LOGGED_IN_KEY',    '<%= @keys.logged_in %>');
-define('NONCE_KEY',        '<%= @keys.nonce %>');
-define('AUTH_SALT',        '<%= @salt.auth %>');
-define('SECURE_AUTH_SALT', '<%= @salt.secure_auth %>');
-define('LOGGED_IN_SALT',   '<%= @salt.logged_in %>');
-define('NONCE_SALT',       '<%= @salt.nonce %>');
-
-/**#@-*/
-
-/**
- * wordpress Database Table prefix.
- *
- * You can have multiple installations in one database if you give each a unique
- * prefix. Only numbers, letters, and underscores please!
- */
-$table_prefix  = $tablePrefix;
-
-/**
- * wordpress Localized Language, defaults to English.
- *
- * Change this to localize wordpress. A corresponding MO file for the chosen
- * language must be installed to wp-content/languages. For example, install
- * de_DE.mo to wp-content/languages and set WPLANG to 'de_DE' to enable German
- * language support.
- */
-define('WPLANG', '<%= @language %>');
-define('WP_DEBUG', false);
-define('WP_AUTO_UPDATE_CORE', true);
-
 $realpath = dirname(__FILE__);
 
 /** Absolute path to the wordpress directory. */
 if ( !defined('ABSPATH') )
     define('ABSPATH', $realpath . '/');
+
+require_once ABSPATH . '../main-config.php';
 
 define('WP_HOME', $wp_home);
 define('WP_CONTENT_DIR', $realpath . '/content' );

@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * The main wp-config with the sensible information
+ */
+
+define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+
+$db_name = '<%= @db.name %>';
+$db_user = '<%= @db.user %>';
+$db_pass = '<%= @db.password %>';
+$db_host = '<%= @db.host %>';
+$wp_home = 'http://<%= @home %>';
+$tablePrefix = '<%= @db.prefix %>';
+$debug_wp = false;
+
+if ('development' === APPLICATION_ENV) {
+    ini_set('html_errors', 1);
+    $db_name = '<%= @db.name %>';
+    $db_user = '<%= @db.user %>';
+    $db_pass = '<%= @db.password %>';
+    $db_host = '<%= @db.host %>';
+    $debug_wp = true;
+    $wp_home = 'http://<%= @home %>';
+}
+
+$table_prefix  = $tablePrefix;
+
+define('DB_NAME', $db_name);
+define('DB_USER', $db_user);
+define('DB_PASSWORD', $db_pass);
+define('DB_HOST', $db_host);
+define('DB_CHARSET', 'utf8');
+define('DB_COLLATE', 'utf8_general_ci');
+
+define('AUTH_KEY',         '<%= @keys.auth %>');
+define('SECURE_AUTH_KEY',  '<%= @keys.secure_auth %>');
+define('LOGGED_IN_KEY',    '<%= @keys.logged_in %>');
+define('NONCE_KEY',        '<%= @keys.nonce %>');
+define('AUTH_SALT',        '<%= @salt.auth %>');
+define('SECURE_AUTH_SALT', '<%= @salt.secure_auth %>');
+define('LOGGED_IN_SALT',   '<%= @salt.logged_in %>');
+define('NONCE_SALT',       '<%= @salt.nonce %>');
+
+// NO Theme or Plugin Editor
+define('DISALLOW_FILE_EDIT', true);
+define('WP_POST_REVISIONS', 5);
+define('EMPTY_TRASH_DAYS', 28);
+
+define('WPLANG', '<%= @language %>');
+define('WP_DEBUG', $debug_wp);
+define('WP_AUTO_UPDATE_CORE', true);

@@ -30,11 +30,11 @@ template "#{public_folder}/index.php" do
   })
 end
 
-template "#{public_folder}/wp-config.php" do
-  source  'wp-config.php.erb'
-  owner   'root'
-  group   'root'
-  mode    '0644'
+template "wp['root_dir']}/main-config.php" do
+  source 'main-config.php.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
   variables({
     'language'  => wp['language'],
     'db'        => wp['db'],
@@ -42,6 +42,13 @@ template "#{public_folder}/wp-config.php" do
     'salt'      => wp['salt'],
     'home'      => wp['server_name']
   })
+end
+
+template "#{public_folder}/wp-config.php" do
+  source  'wp-config.php.erb'
+  owner   'root'
+  group   'root'
+  mode    '0644'
 end
 
 template "#{public_folder}/.htaccess" do
