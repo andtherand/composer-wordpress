@@ -25,7 +25,7 @@ dirs.each do | dir |
     recursive true
     action    :create
 
-    not_if File.directory?(dir)
+    not_if { ::File.directory?(dir) }
   end
 end
 
@@ -35,7 +35,7 @@ directory uploads_folder  do
   mode    '0755'
   action  :create
 
-  not_if File.directory?(uploads_folder)
+  not_if { ::File.directory?(uploads_folder) }
 end
 
 ["#{log_dir}/error.log", "#{log_dir}/access.log"].each do | log_file |
@@ -45,7 +45,7 @@ end
     mode    '0644'
     action  :create
 
-    not_if File.exist?(log_file)
+    not_if { ::File.exist?(log_file) }
   end
 end
 
