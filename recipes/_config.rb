@@ -30,7 +30,7 @@ template "#{public_folder}/index.php" do
   })
 end
 
-template "wp['root_dir']}/main-config.php" do
+template "#{wp['root_dir']}/main-config.php" do
   source 'main-config.php.erb'
   owner 'root'
   group 'root'
