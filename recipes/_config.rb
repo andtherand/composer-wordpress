@@ -52,10 +52,10 @@ template "#{public_folder}/wp-config.php" do
 end
 
 template "#{public_folder}/.htaccess" do
-    source  '.htaccess.erb'
-    owner   'root'
-    group   'root'
-    mode    '0644'
+  source  '.htaccess.erb'
+  owner   'root'
+  group   'root'
+  mode    '0644'
 end
 
 
