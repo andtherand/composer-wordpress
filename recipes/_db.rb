@@ -6,6 +6,12 @@
 
 db = node['wp_composer']['db']
 
+db_user = db['user']
+
+if db_user.length >= 16
+  db_user = db_user[0, 15]
+end
+
 mysql_connection_info = {
   :host     => db['host'],
   :username => db['root'],
@@ -20,7 +26,7 @@ mysql_database db['name'] do
 end
 
 # create the user and grant rights
-mysql_database_user db['user'] do
+mysql_database_user db_user do
   connection      mysql_connection_info
   password        db['password']
   privileges      db['privileges']
