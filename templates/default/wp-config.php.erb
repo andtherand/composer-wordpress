@@ -6,7 +6,13 @@ $realpath = dirname(__FILE__);
 if ( !defined('ABSPATH') )
     define('ABSPATH', $realpath . '/');
 
-require_once($realpath . '/../main-config.php');
+$mainConfigFile = ABSPATH . '../../main-config.php';
+
+if (!file_exists($mainConfigFile)) {
+  die('Somethings wrong with something!');
+}
+
+require_once $mainConfigFile;
 
 define('WP_HOME', $wp_home);
 define('WP_CONTENT_DIR', $realpath . '/content' );

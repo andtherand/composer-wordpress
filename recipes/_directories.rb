@@ -50,3 +50,11 @@ end
 end
 
 
+# init .gitignore
+
+template "#{root_dir}/.gitignore" do
+  source  '.gitignore.erb'
+  owner   'root'
+  group   'root'
+  mode    '0644'
+end
